@@ -1,0 +1,13 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}SOS Player{% endblock %}
+
+{% block body %}
+
+    {{ form_start(formCom) }}
+        {{ form_row(formCom.content) }}
+
+        <button class="btn">Commenter</button>
+    {{ form_end(formCom) }}
+
+{% endblock %}

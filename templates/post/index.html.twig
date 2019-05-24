@@ -1,0 +1,26 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}SOSPlayer{% endblock %}
+
+{% block body %}
+    {{ form_start(form) }}
+        {{ form_row(form.content) }}
+
+        <button class="btn">Publier</button>
+    {{ form_end(form) }}
+
+
+    {% for post in posts %}
+    <h3>{{ post.author.firstName }} {{ post.author.lastName }}</h3>
+    <div class="metadata">{{ post.createdAt|date("m/d/Y H:m:s") }}</div>
+        <p>{{ post.content }}</p>
+            {% for comment in post.commentaires %}
+                <h6>{{ comment.author.firstName }} {{ comment.author.lastName }}</h6>
+                <div class="metadata">{{ comment.createdAt|date("m/d/Y H:m:s") }}</div>
+                    <p>{{ comment.content }}</p>
+                </div>
+            {% endfor %}
+        <a href="/comment/{{ post.id }}">Commenter ce post</a>
+    </div>
+    {% endfor %}
+{% endblock %}
